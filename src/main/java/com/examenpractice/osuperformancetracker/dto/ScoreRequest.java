@@ -9,4 +9,5 @@ public class ScoreRequest {
     public int maxCombo;
     public List<Integer> modIds;
     public String timeStamp;
+    public int score;
 }

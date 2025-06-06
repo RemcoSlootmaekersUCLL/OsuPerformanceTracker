@@ -32,7 +32,7 @@ public class DataInitializer implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
         Player kurookami = new Player("Kurookami", LocalDate.parse("2020-10-03"), "BE");
         playerRepository.save(kurookami);
         Beatmap minamo = new Beatmap("Minamo no Sakura, Yume wa Sakayume", "otetsu", "Reversed Dream", 200, "Riven");
@@ -41,7 +41,7 @@ public class DataInitializer implements CommandLineRunner {
         List<Mod> mods = new ArrayList<>();
         modRepository.findByModType(ModType.HD).ifPresent(mods::add);
 
-        scoreService.addScore(1L, 1L, 98.94, 816, mods, "2025-01-21 22:00");
+        scoreService.addScore(1L, 1L, 98.94, 816, mods, "2025-01-21_22:00", 17043094);
 
         System.out.println("Database initialized~~");
     }

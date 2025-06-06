@@ -38,6 +38,6 @@ public class ScoreController {
     @PostMapping
     public Score addScore(@RequestBody ScoreRequest request) {
         List<Mod> mods = modRepository.findAllById(request.modIds);
-        return scoreService.addScore(request.playerId, request.beatmapId, request.accuracy, request.maxCombo, mods, request.timeStamp);
+        return scoreService.addScore(request.playerId, request.beatmapId, request.accuracy, request.maxCombo, mods, request.timeStamp, request.score);
     }
 }

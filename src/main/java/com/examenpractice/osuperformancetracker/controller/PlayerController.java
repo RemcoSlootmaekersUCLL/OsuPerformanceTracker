@@ -2,6 +2,7 @@ package com.examenpractice.osuperformancetracker.controller;
 
 import com.examenpractice.osuperformancetracker.model.Player;
 import com.examenpractice.osuperformancetracker.service.PlayerService;
+import jakarta.transaction.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,12 +21,12 @@ public class PlayerController {
         return playerService.getAllPlayers();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/id/{id}")
     public Player getPlayer(@PathVariable int id) {
         return playerService.getPlayer(id);
     }
 
-    @GetMapping("/{username}")
+    @GetMapping("/username/{username}")
     public Player getPlayerByUsername(@PathVariable String username) {
         return playerService.getPlayer(username);
     }
@@ -35,7 +36,8 @@ public class PlayerController {
         return playerService.registerPlayer(player);
     }
 
-    @DeleteMapping("/{id}")
+    @Transactional
+    @DeleteMapping("/id/{id}")
     public String deletePlayer(@PathVariable long id) {
         return playerService.deletePlayer(id);
     }

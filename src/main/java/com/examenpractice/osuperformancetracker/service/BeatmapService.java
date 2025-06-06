@@ -7,6 +7,7 @@ import com.examenpractice.osuperformancetracker.repository.BeatmapRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Locale;
 
 @Service
 public class BeatmapService {
@@ -36,7 +37,7 @@ public class BeatmapService {
     }
 
     public List<Beatmap> getBeatmapByTitle(String title) {
-        List<Beatmap> foundBeatmaps = beatmapRepository.findBeatmapByTitle(title);
+        List<Beatmap> foundBeatmaps = beatmapRepository.findBeatmapByTitleContainsIgnoreCase(title.toLowerCase());
         if (foundBeatmaps.isEmpty()) {
             throw new NotFoundException("No beatmap found with title " + title);
         }
@@ -44,7 +45,7 @@ public class BeatmapService {
     }
 
     public List<Beatmap> getBeatmapByArtist(String artist) {
-        List<Beatmap> foundBeatmaps = beatmapRepository.findBeatmapByArtist(artist);
+        List<Beatmap> foundBeatmaps = beatmapRepository.findBeatmapByArtistContainsIgnoreCase(artist);
         if (foundBeatmaps.isEmpty()) {
             throw new NotFoundException("No beatmap found with artist " + artist);
         }
@@ -52,7 +53,7 @@ public class BeatmapService {
     }
 
     public Beatmap getBeatmapByTitleAndArtist(String title, String artist) {
-        Beatmap foundBeatmap = beatmapRepository.findBeatmapByTitleAndArtist(title, artist);
+        Beatmap foundBeatmap = beatmapRepository.findBeatmapByTitleAndArtistContainsIgnoreCase(title, artist);
         if (foundBeatmap == null) {
             throw new NotFoundException("No beatmap found with title and artist: " + title + " - " + artist);
         }

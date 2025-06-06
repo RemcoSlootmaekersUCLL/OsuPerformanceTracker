@@ -20,16 +20,16 @@ public class ModInitializer implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         if (modRepository.count() == 0) {
-            modRepository.save(new Mod(ModType.EZ, 0.50));
-            modRepository.save(new Mod(ModType.NF, 0.50));
-            modRepository.save(new Mod(ModType.HT, 0.30));
-            modRepository.save(new Mod(ModType.HR, 1.06));
-            modRepository.save(new Mod(ModType.SD, 1.06));
-            modRepository.save(new Mod(ModType.PF, 1.06));
-            modRepository.save(new Mod(ModType.DT, 1.12));
-            modRepository.save(new Mod(ModType.NC, 1.12));
-            modRepository.save(new Mod(ModType.HD, 1.06));
-            modRepository.save(new Mod(ModType.FL, 1.06));
+            modRepository.save(new Mod(ModType.EZ));
+            modRepository.save(new Mod(ModType.NF));
+            modRepository.save(new Mod(ModType.HT));
+            modRepository.save(new Mod(ModType.HR));
+            modRepository.save(new Mod(ModType.SD));
+            modRepository.save(new Mod(ModType.PF));
+            modRepository.save(new Mod(ModType.DT));
+            modRepository.save(new Mod(ModType.NC));
+            modRepository.save(new Mod(ModType.HD));
+            modRepository.save(new Mod(ModType.FL));
         }
     }
 }

@@ -31,11 +31,12 @@ public class PlayerService {
         return playerRepository.save(player);
     }
 
-    public Player getPlayer(long playerId) {
-        if (!playerRepository.existsById(playerId)) {
+    public Player getPlayer(int playerId) {
+        Long longPlayerId = Long.valueOf(playerId);
+        if (!playerRepository.existsById(longPlayerId)) {
             throw new NotFoundException("Player not found");
         }
-        return playerRepository.findPlayerById(playerId);
+        return playerRepository.findPlayerById(longPlayerId);
     }
 
     public Player getPlayer(String username) {

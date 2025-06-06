@@ -9,6 +9,7 @@ import com.examenpractice.osuperformancetracker.repository.PlayerRepository;
 import com.examenpractice.osuperformancetracker.repository.ScoreRepository;
 import org.springframework.stereotype.Service;
 import com.examenpractice.osuperformancetracker.model.Score;
+
 import java.util.List;
 
 @Service
@@ -31,7 +32,7 @@ public class ScoreService {
         return allScores;
     }
 
-    public Score addScore(long playerId, long beatmapId, double accuracy, int maxCombo, List<Mod> mods, String timeStamp) {
+    public Score addScore(long playerId, long beatmapId, double accuracy, int maxCombo, List<Mod> mods, String timeStamp, int score) {
         if (!playerRepository.existsById(playerId)) {
             throw new NotFoundException("Player not found.");
         }
@@ -42,15 +43,16 @@ public class ScoreService {
         Player player = playerRepository.findPlayerById(playerId);
         Beatmap beatmap = beatmapRepository.findBeatmapById(beatmapId);
 
-        Score score = new Score();
-        score.setPlayer(player);
-        score.setBeatmap(beatmap);
-        score.setAccuracy(accuracy);
-        score.setMaxCombo(maxCombo);
-        score.setMods(mods);
-        score.setTimeStamp(timeStamp);
+        Score submittedScore = new Score();
+        submittedScore.setPlayer(player);
+        submittedScore.setBeatmap(beatmap);
+        submittedScore.setAccuracy(accuracy);
+        submittedScore.setMaxCombo(maxCombo);
+        submittedScore.setMods(mods);
+        submittedScore.setTimeStamp(timeStamp);
+        submittedScore.setScore(score);
 
-        return scoreRepository.save(score);
+        return scoreRepository.save(submittedScore);
     }
 
     public List<Score> getTopScoresByPlayer(long playerId) {
