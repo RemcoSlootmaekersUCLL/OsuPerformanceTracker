@@ -21,13 +21,10 @@ public class Mod {
     @Enumerated(EnumType.STRING)
     private ModType modType;
 
-    private double scoreMultiplier;
-
     public Mod() {}
 
-    public Mod(ModType modType, double multiplier) {
+    public Mod(ModType modType) {
         this.modType = modType;
-        this.scoreMultiplier = modType.getScoreMultiplier();
     }
 
     public int getId() {
@@ -44,11 +41,6 @@ public class Mod {
 
     public void setModType(ModType modType) {
         this.modType = modType;
-        this.scoreMultiplier = modType.getScoreMultiplier();
-    }
-
-    public void setScoreMultiplier(double multiplier) {
-        this.scoreMultiplier = multiplier;
     }
 
     public List<Score> getScores() {

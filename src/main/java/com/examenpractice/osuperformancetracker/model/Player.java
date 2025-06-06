@@ -24,7 +24,7 @@ public class Player {
     @NotBlank(message = "Country is required.")
     private String country;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "player", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Score> scores = new ArrayList<>();
 

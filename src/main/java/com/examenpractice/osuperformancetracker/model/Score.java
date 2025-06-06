@@ -1,9 +1,11 @@
 package com.examenpractice.osuperformancetracker.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,13 +42,14 @@ public class Score {
     private List<Mod> mods = new ArrayList<>();
 
     @NotBlank(message = "Timestamp is required.")
-    private String timeStamp;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
+    private LocalDateTime timeStamp;
 
     private double totalMultiplier;
 
     public Score() {}
 
-    public Score(Player player, Beatmap beatmap, double accuracy, int maxCombo, List<Mod> mods, String timeStamp) {
+    public Score(Player player, Beatmap beatmap, double accuracy, int maxCombo, List<Mod> mods, LocalDateTime timeStamp) {
         setPlayer(player);
         setBeatmap(beatmap);
         setAccuracy(accuracy);
@@ -114,11 +117,11 @@ public class Score {
         this.totalMultiplier = multiplier;
     }
 
-    public String getTimeStamp() {
+    public LocalDateTime getTimeStamp() {
         return timeStamp;
     }
 
-    public void setTimeStamp(String timeStamp) {
+    public void setTimeStamp(LocalDateTime timeStamp) {
         this.timeStamp = timeStamp;
     }
 }

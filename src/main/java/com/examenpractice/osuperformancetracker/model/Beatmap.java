@@ -31,7 +31,7 @@ public class Beatmap {
     @NotBlank(message = "Creator is required.")
     private String creator;
 
-    @OneToMany
+    @OneToMany(mappedBy = "beatmap")
     @JsonIgnore
     private List<Score> scoreList = new ArrayList<>();
 
